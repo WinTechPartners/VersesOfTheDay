@@ -1,0 +1,15 @@
+{
+  "name": "Verses of the Day",
+  "short_name": "Daily Verses",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c1929",
+  "theme_color": "#0c1929",
+  "icons": [
+    {
+      "src": "/lifestages-icon.jpg",
+      "sizes": "any",
+      "type": "image/jpeg"
+    }
+  ]
+}

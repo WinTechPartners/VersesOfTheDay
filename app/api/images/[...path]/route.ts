@@ -1,0 +1,2 @@
+import {bucket} from '@/lib/store';
+export async function GET(_req:Request,{params}:{params:Promise<{path:string[]}>}){try{const {path}=await params;const o=await bucket().get(path.join('/'));if(!o)return new Response('Not found',{status:404});return new Response(o.body,{headers:{'Content-Type':o.httpMetadata?.contentType||'image/jpeg','Cache-Control':'public,max-age=31536000,immutable'}});}catch{return new Response('Image unavailable',{status:503});}}

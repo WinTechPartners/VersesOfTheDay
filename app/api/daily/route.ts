@@ -1,0 +1,3 @@
+import {db} from '@/lib/store';
+import {initialSelections} from '@/lib/initial-selections';
+export async function GET(){try{const rows=await db().prepare('SELECT provider,date,reference,source_url AS sourceUrl,checked_at AS checkedAt,theme FROM daily_selections ORDER BY checked_at DESC,date DESC').all();const seen=new Set();const selections=rows.results.filter((r:any)=>{if(seen.has(r.provider))return false;seen.add(r.provider);return true});return Response.json({selections:[...selections,...initialSelections.filter(s=>!seen.has(s.provider))]})}catch{return Response.json({selections:initialSelections,unavailable:true})}}

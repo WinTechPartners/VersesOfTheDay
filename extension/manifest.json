@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "This Verse Explained",
+  "version": "1.0.0",
+  "description": "Highlight a Bible reference, right-click, and open its illustrated context.",
+  "permissions": [
+    "contextMenus",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html"
+}

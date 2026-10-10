@@ -1,0 +1,3 @@
+"use client";
+import {useEffect,useState} from 'react';
+export default function VersionSelector({onChange}:{onChange:(v:string)=>void}){const [version,setVersion]=useState('WEB'),[items,setItems]=useState<any[]>([]);useEffect(()=>{const v=localStorage.getItem('bibleVersion')||'WEB';setVersion(v);onChange(v);fetch('/api/bible?action=books').then(r=>r.json()).then((d:any)=>setItems(d.translations||[]))},[]);return <select aria-label="Bible version" className="version-select" value={version} onChange={e=>{setVersion(e.target.value);localStorage.setItem('bibleVersion',e.target.value);onChange(e.target.value)}}>{items.length?items.map(t=><option key={t.id} value={t.id}>{t.abbr}</option>):<option>WEB</option>}</select>}
